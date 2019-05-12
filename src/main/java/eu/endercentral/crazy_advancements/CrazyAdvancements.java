@@ -7,6 +7,7 @@ import eu.endercentral.crazy_advancements.manager.AdvancementManager;
 import net.minecraft.server.v1_14_R1.PacketPlayOutAdvancements;
 import net.minecraft.server.v1_14_R1.PacketPlayOutSelectAdvancementTab;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Warning;
 import org.bukkit.command.Command;
@@ -152,7 +153,7 @@ public class CrazyAdvancements extends JavaPlugin implements Listener {
 	 * Sets the active tab
 	 * 
 	 * @param player The player whose Tab should be changed
-	 * @param rootAdvancementThe name of the tab to change to
+	 * @param rootAdvancement name of the tab to change to
 	 */
 	public static void setActiveTab(Player player, NameKey rootAdvancement) {
 		setActiveTab(player, rootAdvancement, true);
@@ -230,8 +231,8 @@ public class CrazyAdvancements extends JavaPlugin implements Listener {
 		return useUUID;
 	}
 	
-	private final String noPermission = "�cI'm sorry but you do not have permission to perform this command. Please contact the server administrator if you believe that this is in error.";
-	private final String commandIncompatible = "�cThis Command is incompatible with your Arguments!";
+	private final String noPermission = ChatColor.RED + "I'm sorry but you do not have permission to perform this command. Please contact the server administrator if you believe that this is in error.";
+	private final String commandIncompatible = ChatColor.RED + "This Command is incompatible with your Arguments!";
 	private final List<String> selectors = Arrays.asList("@a", "@p", "@s", "@r");
 	
 	private boolean startsWithSelector(String arg) {
@@ -278,13 +279,13 @@ public class CrazyAdvancements extends JavaPlugin implements Listener {
 								Advancement advancement = new Advancement(null, new NameKey("toast", "message"), display);
 								advancement.displayToast(player);
 								
-								sender.sendMessage("�aSuccessfully displayed Toast to �b" + player.getName() + "�a!");
+								sender.sendMessage(ChatColor.GREEN + "Successfully displayed Toast to " + ChatColor.AQUA + player.getName() + ChatColor.GREEN + "!");
 							} else {
-								sender.sendMessage("�c'" + args[1] + "' isn't a valid Item Material");
+								sender.sendMessage(ChatColor.RED + "'" + args[1] + "' isn't a valid Item Material");
 							}
 							
 						} else {
-							sender.sendMessage("�cCan't find Player '�e" + args[0] + "�c'");
+							sender.sendMessage(ChatColor.GREEN + "Can't find Player '" + ChatColor.YELLOW + args[0] + ChatColor.GREEN + "'");
 						}
 					} catch(Exception ex) {
 						sender.sendMessage(commandIncompatible);
@@ -292,7 +293,7 @@ public class CrazyAdvancements extends JavaPlugin implements Listener {
 					
 					
 				} else {
-					sender.sendMessage("�cUsage: �r" + cmd.getUsage());
+					sender.sendMessage(ChatColor.RED + "Usage: " + ChatColor.RESET + cmd.getUsage());
 				}
 			} else {
 				sender.sendMessage(noPermission);
@@ -339,15 +340,15 @@ public class CrazyAdvancements extends JavaPlugin implements Listener {
 												manager.revokeCriteria(player, advancement, convertedCriteria);
 											}
 											
-											String criteriaString = "�c" + convertedCriteria[0];
+											String criteriaString = ChatColor.RED + convertedCriteria[0];
 											if(convertedCriteria.length > 1) {
 												for(String criteria : Arrays.copyOfRange(convertedCriteria, 1, convertedCriteria.length - 1)) {
-													criteriaString += "�a, �c" + criteria;
+													criteriaString += ChatColor.GREEN + ", " + ChatColor.RED + criteria;
 												}
-												criteriaString += " �aand �c" + convertedCriteria[convertedCriteria.length - 1];
+												criteriaString += ChatColor.GREEN + " and " + ChatColor.RED + convertedCriteria[convertedCriteria.length - 1];
 											}
 											
-											sender.sendMessage("�aSuccessfully " + (grant ? "granted" : "revoked") + " Criteria " + criteriaString + " �afor '�e" + advancement.getName() + "�a' " + (grant ? "to" : "from") + " �b" + player.getName());
+											sender.sendMessage(ChatColor.GREEN + "Successfully " + (grant ? "granted" : "revoked") + " Criteria " + criteriaString + ChatColor.GREEN + " for '" + ChatColor.YELLOW + advancement.getName() + ChatColor.GREEN + "' " + (grant ? "to" : "from") + " "+ ChatColor.AQUA + player.getName());
 											
 										} else {
 											if(grant) {
@@ -356,21 +357,21 @@ public class CrazyAdvancements extends JavaPlugin implements Listener {
 												manager.revokeAdvancement(player, advancement);
 											}
 											
-											sender.sendMessage("�aSuccessfully " + (grant ? "granted" : "revoked") + " Advancement '�e" + advancement.getName() + "�a' " + (grant ? "to" : "from") + " �b" + player.getName());
+											sender.sendMessage(ChatColor.GREEN + "Successfully " + (grant ? "granted" : "revoked") + " Advancement '" + ChatColor.YELLOW + advancement.getName() + ChatColor.GREEN + "' " + (grant ? "to" : "from") + " " + ChatColor.AQUA + player.getName());
 										}
 										
 									} else {
-										sender.sendMessage("�cAdvancement with Name '�e" + args[2] + "�c' does not exist in '�e" + args[1] + "�c'");
+										sender.sendMessage(ChatColor.RED + "Advancement with Name '" + ChatColor.YELLOW + args[2] + ChatColor.RED + "' does not exist in '" + ChatColor.YELLOW + args[1] + ChatColor.RED + "'");
 									}
 									
 								} else {
-									sender.sendMessage("�c'�e" + args[1] + "�c' does not contain Player '�e" + args[0] + "�c'");
+									sender.sendMessage(ChatColor.RED + "'" + ChatColor.YELLOW + args[1] + ChatColor.RED + "' does not contain Player '" + ChatColor.YELLOW + args[0] + ChatColor.RED + "'");
 								}
 							} else {
-								sender.sendMessage("�cManager with Name '�e" + args[1] + "�c' does not exist");
+								sender.sendMessage(ChatColor.RED + "Manager with Name '" + ChatColor.YELLOW + args[1] + ChatColor.RED + "' does not exist");
 							}
 						} else {
-							sender.sendMessage("�cCan't find Player '�e" + args[0] + "�c'");
+							sender.sendMessage(ChatColor.RED + "Can't find Player '" + ChatColor.YELLOW + args[0] + ChatColor.RED + "'");
 						}
 						
 					} catch(Exception ex) {
@@ -378,7 +379,7 @@ public class CrazyAdvancements extends JavaPlugin implements Listener {
 					}
 					
 				} else {
-					sender.sendMessage("�cUsage: �r" + cmd.getUsage());
+					sender.sendMessage(ChatColor.RED + "Usage: " + ChatColor.RESET + cmd.getUsage());
 				}
 			} else {
 				sender.sendMessage(noPermission);
