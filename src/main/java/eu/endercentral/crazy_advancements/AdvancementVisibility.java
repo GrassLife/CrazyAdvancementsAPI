@@ -1,8 +1,8 @@
 package eu.endercentral.crazy_advancements;
 
-import java.util.Arrays;
-
 import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public abstract class AdvancementVisibility {
 	

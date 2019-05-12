@@ -1,11 +1,10 @@
 package eu.endercentral.crazy_advancements.events;
 
+import eu.endercentral.crazy_advancements.NameKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-
-import eu.endercentral.crazy_advancements.NameKey;
 
 public class AdvancementTabChangeEvent extends Event implements Cancellable {
 	

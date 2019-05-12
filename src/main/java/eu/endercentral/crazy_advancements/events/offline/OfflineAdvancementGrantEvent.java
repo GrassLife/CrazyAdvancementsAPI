@@ -1,12 +1,11 @@
 package eu.endercentral.crazy_advancements.events.offline;
 
-import java.util.UUID;
-
+import eu.endercentral.crazy_advancements.Advancement;
+import eu.endercentral.crazy_advancements.manager.AdvancementManager;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import eu.endercentral.crazy_advancements.Advancement;
-import eu.endercentral.crazy_advancements.manager.AdvancementManager;
+import java.util.UUID;
 
 public class OfflineAdvancementGrantEvent extends Event {
 	

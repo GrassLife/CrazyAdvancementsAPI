@@ -1,11 +1,10 @@
 package eu.endercentral.crazy_advancements.events;
 
+import eu.endercentral.crazy_advancements.Advancement;
+import eu.endercentral.crazy_advancements.manager.AdvancementManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-
-import eu.endercentral.crazy_advancements.Advancement;
-import eu.endercentral.crazy_advancements.manager.AdvancementManager;
 
 public class CriteriaProgressChangeEvent extends Event {
 	
