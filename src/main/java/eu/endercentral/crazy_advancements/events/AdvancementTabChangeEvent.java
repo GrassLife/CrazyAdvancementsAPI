@@ -35,6 +35,7 @@ public class AdvancementTabChangeEvent extends Event implements Cancellable {
 	private boolean cancelled;
 	
 	public AdvancementTabChangeEvent(Player player, NameKey tabAdvancement) {
+		super(true);
 		this.player = player;
 		this.tabAdvancement = tabAdvancement;
 	}
