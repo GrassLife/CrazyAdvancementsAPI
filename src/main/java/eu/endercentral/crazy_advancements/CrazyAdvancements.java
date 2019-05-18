@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -55,8 +56,9 @@ public class CrazyAdvancements extends JavaPlugin implements Listener {
 	@Override
 	public void onEnable() {
 		packetReciever = new AdvancementPacketReceiver();
-		
+
 		//Registering Players
+		Collection<? extends Player> players = Bukkit.getOnlinePlayers();
 		Bukkit.getScheduler().runTaskLater(this, new Runnable() {
 			
 			@Override
@@ -65,7 +67,7 @@ public class CrazyAdvancements extends JavaPlugin implements Listener {
 				File saveLocation = new File(path);
 				loadAdvancements(saveLocation);
 				
-				for(Player player : Bukkit.getOnlinePlayers()) {
+				for(Player player : players) {
 					fileAdvancementManager.addPlayer(player);
 					packetReciever.initPlayer(player);
 					initiatedPlayers.add(player);
