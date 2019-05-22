@@ -27,6 +27,7 @@ public class CriteriaProgressChangeEvent extends Event {
 	private int progress;
 	
 	public CriteriaProgressChangeEvent(AdvancementManager manager, Advancement advancement, Player player, int progressBefore, int progress) {
+		super(true);
 		this.manager = manager;
 		this.advancement = advancement;
 		this.player = player;

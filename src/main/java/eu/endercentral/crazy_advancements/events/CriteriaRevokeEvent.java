@@ -26,6 +26,7 @@ public class CriteriaRevokeEvent extends Event {
 	private final Player player;
 	
 	public CriteriaRevokeEvent(AdvancementManager manager, Advancement advancement, String[] criteria, Player player) {
+		super(true);
 		this.manager = manager;
 		this.advancement = advancement;
 		this.criteria = criteria;

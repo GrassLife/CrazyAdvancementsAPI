@@ -26,6 +26,7 @@ public class AdvancementGrantEvent extends Event {
 	private boolean displayMessage;
 	
 	public AdvancementGrantEvent(AdvancementManager manager, Advancement advancement, Player player, boolean displayMessage) {
+		super(true);
 		this.manager = manager;
 		this.advancement = advancement;
 		this.player = player;

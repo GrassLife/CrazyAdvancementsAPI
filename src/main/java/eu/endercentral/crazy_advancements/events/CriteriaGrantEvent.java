@@ -26,6 +26,7 @@ public class CriteriaGrantEvent extends Event {
 	private final Player player;
 	
 	public CriteriaGrantEvent(AdvancementManager manager, Advancement advancement, String[] criteria, Player player) {
+		super(true);
 		this.manager = manager;
 		this.advancement = advancement;
 		this.criteria = criteria;
